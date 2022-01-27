@@ -31,9 +31,25 @@ jobs:
           chromedriver --url-base=/wd/hub &
           sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
       - run: yarn getCovid
-      - name: Discord notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_UPDATE_WEBHOOK }}
-        uses: Ilshidur/action-discord@master
-        with:
-          args: 'Project: {{ EVENT_PAYLOAD.repository.full_name }} - CI/CD Triggered.'
+     
+
+      - id: set_var
+        run: |
+          content=`cat ./covid.json`
+          # the following lines are only required for multi line json
+          content="${content//'%'/'%25'}"
+          content="${content//$'\n'/'%0A'}"
+          content="${content//$'\r'/'%0D'}"
+          # end of optional handling for multi line json
+          echo "::set-output name=covidStats::$content"
+      - run: |
+          echo "${{fromJson(steps.set_var.outputs.covidStats)}}"
+
+      
+          - uses: th0th/notify-discord@v0.4.1
+          if: ${{ always() }}
+          env:
+            DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_UPDATE_WEBHOOK }}
+            GITHUB_ACTOR: ${{ github.actor }}
+            GITHUB_JOB_NAME: "Covid Stats"
+            GITHUB_JOB_STATUS: ${{fromJson(steps.set_var.outputs.covidStats)}}
