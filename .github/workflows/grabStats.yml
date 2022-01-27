@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
+    name: Build on Mac OS
     runs-on: macos-latest
 
     strategy:
@@ -42,8 +43,8 @@ jobs:
           # end of optional handling for multi line json
           echo "::set-output name=covidStats::$content"
           #     echo "${{fromJson(steps.set_var.outputs.covidStats)}}"
-        env:
-          COVID_STATS: testing
+        # env:
+        #   COVID_STATS: testing
       - name: Test Success
         uses: rjstone/discord-webhook-notify@v1
         if: success()
