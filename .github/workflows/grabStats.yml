@@ -31,11 +31,10 @@ jobs:
           chromedriver --url-base=/wd/hub &
           sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
       - run: yarn getCovid
-     
+      - run: ls -lha
 
       - id: set_var
         run: |
-          ls -lha
           content=`cat ./covid.json`
           # the following lines are only required for multi line json
           content="${content//'%'/'%25'}"
