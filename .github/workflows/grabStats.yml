@@ -42,8 +42,8 @@ jobs:
           content="${content//$'\r'/'%0D'}"
           # end of optional handling for multi line json
           echo "::set-output name=covidStats::$content"
-      # - run: |
-      #     echo "${{fromJson(steps.set_var.outputs.covidStats)}}"
+      - run: |
+          echo "${{fromJson(steps.set_var.outputs.covidStats)}}"
         env:
           COVID_STATS: ${{fromJson(steps.set_var.outputs.covidStats)}}
       - uses: th0th/notify-discord@v0.4.1
