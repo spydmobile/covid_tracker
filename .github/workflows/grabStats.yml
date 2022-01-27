@@ -35,6 +35,7 @@ jobs:
 
       - id: set_var
         run: |
+          ls -lha
           content=`cat ./covid.json`
           # the following lines are only required for multi line json
           content="${content//'%'/'%25'}"
