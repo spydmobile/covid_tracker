@@ -51,6 +51,8 @@ jobs:
         if: success()
         with:
             severity: info
+            text: ${{fromJson(steps.set_var.outputs.covidStats)}}
             details: Test Succeeded!
+            description: Some Info.
             webhookUrl: ${{ secrets.DISCORD_UPDATE_WEBHOOK }}
       
