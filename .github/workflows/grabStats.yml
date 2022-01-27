@@ -51,7 +51,7 @@ jobs:
         with:
             severity: info
             # text: ${{fromJson(steps.set_var.outputs.covidStats)}}
-            text : This is pacelholder text
+            text: This is pacelholder text
             details: Test Succeeded!
             description: Some Info.
             webhookUrl: ${{ secrets.DISCORD_UPDATE_WEBHOOK }}
