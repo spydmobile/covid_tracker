@@ -21,6 +21,7 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
       - run: yarn install
+      - run: yarn compile
       - uses: nanasess/setup-chromedriver@v1
         #with:
           # Optional: do not specify to match Chrome's version
