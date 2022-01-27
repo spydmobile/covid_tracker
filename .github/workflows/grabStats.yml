@@ -103,7 +103,8 @@ jobs:
         if: success()
         with:
           severity: info
-          text: ${{fromJson(outputs.covidStats.data)}}
+          # text: ${{fromJson(outputs.covidStats.data)}}
+          text: "$content"
           # text: This is pacelholder text
           details: Automated Collection & Reporting Succeeded!
           description: SpyD's Covid Stats Bot.
