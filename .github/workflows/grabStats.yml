@@ -46,17 +46,12 @@ jobs:
       #     echo "${{fromJson(steps.set_var.outputs.covidStats)}}"
         # env:
         #   COVID_STATS: ${{fromJson(steps.set_var.outputs.covidStats)}}
-
-      - uses: ehsanfox/discord.js-webhook
+      - name: send custom message with args
+        uses: appleboy/discord-action@master
         with:
-          # Important/Required Data
-          id: ${{ secrets.DISCORD_UPDATE_WEBHOOK_ID }}
-          token: ${{ secrets.DISCORD_UPDATE_WEBHOOK_TOKEN }}
-
-          # Optional Data
-          content: sample stats here...
-          
-          # Add more options if u want...
+          webhook_id: ${{ secrets.DISCORD_UPDATE_WEBHOOK_ID }}
+          webhook_token: ${{ secrets.DISCORD_UPDATE_WEBHOOK_TOKEN }}
+          message: The ${{ github.event_name }} event triggered first step.
 
 
     
