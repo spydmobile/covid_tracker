@@ -42,16 +42,16 @@ jobs:
           content="${content//$'\r'/'%0D'}"
           # end of optional handling for multi line json
           echo "::set-output name=covidStats::$content"
-      # - run: |
-      #     echo "${{fromJson(steps.set_var.outputs.covidStats)}}"
-        # env:
-        #   COVID_STATS: ${{fromJson(steps.set_var.outputs.covidStats)}}
+          #     echo "${{fromJson(steps.set_var.outputs.covidStats)}}"
+        env:
+          COVID_STATS: testing
       - name: Test Success
         uses: rjstone/discord-webhook-notify@v1
         if: success()
         with:
             severity: info
-            text: ${{fromJson(steps.set_var.outputs.covidStats)}}
+            # text: ${{fromJson(steps.set_var.outputs.covidStats)}}
+            text : This is pacelholder text
             details: Test Succeeded!
             description: Some Info.
             webhookUrl: ${{ secrets.DISCORD_UPDATE_WEBHOOK }}
