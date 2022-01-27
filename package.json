@@ -5,6 +5,8 @@
   "scripts": {
     "getCovid": "node dist/getCovid.js",
     "lint": "eslint . --fix",
+    "makeChart": "node dist/doChart.js",
+    "testChart": "node dist/testChart.js",
     "compile": "tsc"
   },
   "repository": "git@github.com:spydmobile/covid_tracker.git",
@@ -18,6 +20,8 @@
     "@typescript-eslint/parser": "^5.10.1",
     "eslint": "^8.7.0",
     "fs-extra": "^10.0.0",
+    "image-charts": "^6.0.18",
+    "request": "^2.88.2",
     "selenium-webdriver": "^4.1.1",
     "typescript": "^4.5.5"
   },

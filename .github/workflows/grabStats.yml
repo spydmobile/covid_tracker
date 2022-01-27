@@ -1,14 +1,14 @@
 name: Covid Collection
 
 on:
-  schedule:
-  # run At minute 5 past every 4th hour on every day-of-week from Monday through Friday.
-    - cron: "5 */4 * * 1-5"
-  
   push:
-    # Run when push on dev
     branches:
       - dev
+  schedule:
+  # run At minute 5 past every 4th hour on every day-of-week from Monday through Friday.
+    - cron: "5 */1 * * 1-5"
+  
+
   workflow_dispatch:
 jobs:
   build:
