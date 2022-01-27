@@ -46,6 +46,7 @@ jobs:
       #     echo "${{fromJson(steps.set_var.outputs.covidStats)}}"
         # env:
         #   COVID_STATS: ${{fromJson(steps.set_var.outputs.covidStats)}}
+      - name: Send Discord Message
       - uses: ehsanfox/discord.js-webhook
         with:
           # Important/Required Data
