@@ -103,7 +103,8 @@ jobs:
         with:
           severity: info
           # text: ${{fromJson(outputs.covidStats.data)}}
-          text: ${{steps.set_var.outputs.covidStats}}
+          # text: ${{steps.set_var.outputs.covidStats}} # This actually works.
+          text: ${{fromJson(steps.set_var.outputs.covidStats)}}
           # text: This is pacelholder text
           details: Automated Collection & Reporting Succeeded!
           description: SpyD's Covid Stats Bot.
