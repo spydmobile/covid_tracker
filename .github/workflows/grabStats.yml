@@ -19,8 +19,7 @@ jobs:
       matrix:
         node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-    outputs:
-      output1: ${{ steps.step1.outputs.test }}
+
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -104,7 +103,7 @@ jobs:
         with:
           severity: info
           # text: ${{fromJson(outputs.covidStats.data)}}
-          text: "$content"
+          text: ${{steps.set_var.outputs.covidStats}}
           # text: This is pacelholder text
           details: Automated Collection & Reporting Succeeded!
           description: SpyD's Covid Stats Bot.
