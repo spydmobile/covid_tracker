@@ -44,11 +44,12 @@ jobs:
       #     echo "::set-output name=covidStats::$content"
       # - run: |
       #     echo "${{fromJson(steps.set_var.outputs.covidStats)}}"
-      
+        env:
+          COVID_STATS: ${{fromJson(steps.set_var.outputs.covidStats)}}
       - uses: th0th/notify-discord@v0.4.1
         if: ${{ always() }}
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_UPDATE_WEBHOOK }}
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_JOB_NAME: "Covid Stats"
-          GITHUB_JOB_STATUS: ${{fromJson(steps.set_var.outputs.covidStats)}}
+          GITHUB_JOB_STATUS: ${{ COVID_STATS }}
