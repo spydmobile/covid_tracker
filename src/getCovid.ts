@@ -1,5 +1,5 @@
 import fs from 'fs-extra'
-import { until, By,Builder, Capabilities } from 'selenium-webdriver'
+import { until, By, Builder, Capabilities } from 'selenium-webdriver'
 
 const covidUrl = "https://nwt-covid.shinyapps.io/Testing-and-Cases/?lang=1"
 const smithXpath = "/html/body/div[1]/div/div[1]/div[1]/div/div[3]/div[2]/div[2]/div/div/div/table/tbody/tr[3]/td[2]"
@@ -9,16 +9,22 @@ const updateDateXpath = "/html/body/div[1]/div/div[1]/div[1]/div/div[6]/div/div/
 const covidFile = "./covid.json"
 let activeCovidData: CovidStatsObject
 interface CovidStatsObject {
-    [key: string]: {
-        "Fort Smith": string;
-        "Hay River": string;
-        "Yellowknife": string;
+    "lastCheck": string;
+    "data": {
+        [key: string]: {
+            "Fort Smith": string;
+            "Hay River": string;
+            "Yellowknife": string;
+        }
     };
 }
 try {
-    activeCovidData = JSON.parse(fs.readFileSync(covidFile, 'utf-8'))    
+    activeCovidData = JSON.parse(fs.readFileSync(covidFile, 'utf-8'))
 } catch (error) {
-    activeCovidData = {};
+    activeCovidData = {
+        "lastCheck": new Date().toISOString(),
+        data: {}
+    };
 }
 
 
@@ -44,7 +50,8 @@ export const getRemote = async () => {
             "Hay River": hayRiver,
             "Yellowknife": yellowknife
         }
-        activeCovidData[updated] = updateObject
+        activeCovidData.data[updated] = updateObject
+        activeCovidData.lastCheck = new Date().toISOString();
         console.log(activeCovidData);
         const data = JSON.stringify(activeCovidData, null, 2);
         fs.writeFileSync(covidFile, data);

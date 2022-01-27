@@ -1,32 +1,36 @@
 {
-  "2022-01-19": {
-    "Fort Smith": "59",
-    "Hay River": "70",
-    "Yellowknife": "707"
+  "lastcheck": "",
+  "data": {
+    "2022-01-19": {
+      "Fort Smith": "59",
+      "Hay River": "70",
+      "Yellowknife": "707"
+    },
+    "2022-01-20": {
+      "Fort Smith": "61",
+      "Hay River": "84",
+      "Yellowknife": "696"
+    },
+    "2022-01-21": {
+      "Fort Smith": "42",
+      "Hay River": "76",
+      "Yellowknife": "496"
+    },
+    "2022-01-24": {
+      "Fort Smith": "31",
+      "Hay River": "84",
+      "Yellowknife": "432"
+    },
+    "2022-01-25": {
+      "Fort Smith": "35",
+      "Hay River": "90",
+      "Yellowknife": "435"
+    },
+    "2022-01-26": {
+      "Fort Smith": "43",
+      "Hay River": "87",
+      "Yellowknife": "435"
+    }
   },
-  "2022-01-20": {
-    "Fort Smith": "61",
-    "Hay River": "84",
-    "Yellowknife": "696"
-  },
-  "2022-01-21": {
-    "Fort Smith": "42",
-    "Hay River": "76",
-    "Yellowknife": "496"
-  },
-  "2022-01-24": {
-    "Fort Smith": "31",
-    "Hay River": "84",
-    "Yellowknife": "432"
-  },
-  "2022-01-25": {
-    "Fort Smith": "35",
-    "Hay River": "90",
-    "Yellowknife": "435"
-  },
-  "2022-01-26": {
-    "Fort Smith": "43",
-    "Hay River": "87",
-    "Yellowknife": "435"
-  }
+  "lastCheck": "2022-01-27T19:17:49.909Z"
 }
