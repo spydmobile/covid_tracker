@@ -44,8 +44,8 @@ jobs:
           echo "::set-output name=covidStats::$content"
       - run: |
           echo "${{fromJson(steps.set_var.outputs.covidStats)}}"
-        env:
-          COVID_STATS: ${{fromJson(steps.set_var.outputs.covidStats)}}
+        # env:
+        #   COVID_STATS: ${{fromJson(steps.set_var.outputs.covidStats)}}
       - uses: th0th/notify-discord@v0.4.1
         if: ${{ always() }}
         env:
