@@ -1,5 +1,5 @@
 {
-  "lastcheck": "",
+  "lastCheck": "2022-01-27T20:11:43.752Z",
   "data": {
     "2022-01-19": {
       "Fort Smith": "59",
@@ -31,6 +31,6 @@
       "Hay River": "87",
       "Yellowknife": "435"
     }
-  },
-  "lastCheck": "2022-01-27T20:11:43.752Z"
+  }
+ 
 }
