@@ -1,0 +1,27 @@
+name: Triggered Build
+
+on:
+  push:
+    branches:    
+      - 'dev'
+
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: nanasess/setup-chromedriver@v1
+        with:
+          # Optional: do not specify to match Chrome's version
+          # chromedriver-version: '88.0.4324.96'
+      - run: |
+          export DISPLAY=:99
+          chromedriver --url-base=/wd/hub &
+          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_UPDATE_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'Project: {{ EVENT_PAYLOAD.repository.full_name }} - CI/CD Triggered.'
