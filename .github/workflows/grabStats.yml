@@ -36,7 +36,15 @@ jobs:
           sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
       - run: yarn getCovid
       - run: ls -lha
-
+      - name: Commit the data back to the repo
+        uses: devops-infra/action-commit-push@master
+        with:
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
+          add_timestamp: true
+          commit_prefix: "[AUTO]"
+          commit_message: "dev"
+          force: false
+          target_branch: update/version
       - id: set_var
         run: |
           content=`cat ./covid.json`
@@ -48,7 +56,7 @@ jobs:
           echo "::set-output name=covidStats::$content"
         # env:
         #   COVID_STATS: testing
-      - name: Test Success
+      - name: Notify Via Discord
         uses: rjstone/discord-webhook-notify@v1
         if: success()
         with:
