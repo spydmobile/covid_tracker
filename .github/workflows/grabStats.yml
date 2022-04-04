@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - dev
-  schedule:
+  # schedule:
   # run At minute 5 past every 4th hour on every day-of-week from Monday through Friday.
-    - cron: "5 */3 * * 1-5"
+  #  - cron: "5 */3 * * 1-5"
   
 
   workflow_dispatch:
